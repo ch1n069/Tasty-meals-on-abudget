@@ -4,6 +4,7 @@ const ResultsDetail = ({ result }) => {
   return (
     <View style={styles.container}>
       <Image style={styles.image} source={{ uri: result.image_url }} />
+      {/* ///images default behavior is to collapse itself unless given a width and heigh  */}
       <Text style={styles.name}>{result.name}</Text>
       <Text>
         {result.rating} stars {ResultsDetail.review_count}Reviews
