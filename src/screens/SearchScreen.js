@@ -2,11 +2,10 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { Text, View, Button, StyleSheet, ScrollView } from "react-native";
 import SearchBar from "../components/SearchBar";
-import Yelp from "../api/Yelp";
 import "react-native-url-polyfill/auto";
-import useResults from "../hooks/UseResults"; //hooks
+import useResults from "../hooks/useResults"; //hooks
 import ResultList from "../components/ResultList";
-const SearchScreen = ({ navigation }) => {
+const SearchScreen = () => {
   const [term, setTerm] = useState("");
   const [searchApi, results, error] = useResults();
 
@@ -29,20 +28,11 @@ const SearchScreen = ({ navigation }) => {
       <Text>{results.length}</Text>
       <ScrollView>
         <ResultList
-          navigation={navigation}
           results={filterResultsByPrice("$")}
           title="Cost Effective"
         />
-        <ResultList
-          navigation={navigation}
-          results={filterResultsByPrice("$$")}
-          title="Bit pricier"
-        />
-        <ResultList
-          navigation={navigation}
-          results={filterResultsByPrice("$$$")}
-          title="Big Spender"
-        />
+        <ResultList results={filterResultsByPrice("$$")} title="Bit pricier" />
+        <ResultList results={filterResultsByPrice("$$$")} title="Big Spender" />
       </ScrollView>
     </View>
   );
